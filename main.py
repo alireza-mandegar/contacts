@@ -147,5 +147,12 @@ def get_linkedin(name):
 
 group.add_command(get_user)
 group.add_command(add_user)
+group.add_command(get_number)
+group.add_command(get_email)
+group.add_command(get_telegram)
+group.add_command(get_instagram)
+group.add_command(get_twitter)
+group.add_command(get_github)
+group.add_command(get_linkedin)
 if __name__ == "__main__":
     group()
