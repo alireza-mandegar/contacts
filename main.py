@@ -1,3 +1,4 @@
+import sqlite3
 import click
 
 
@@ -21,9 +22,17 @@ class Person:
 p = Person("alireza", "09221235677", "alireza.mani95@gmail.com", "alireza_mandegar",
            "alirezaamandegar", "alirzamandegar", "alireza-mandegar", "alirezamandegar")
 
+con = sqlite3.connect("./contact.db")
+cur = con.cursor()
+cur.execute('''CREATE TABLE contact
+                (name, number, email, telegram, instagram, twitter, github, linkedin)''')
 
-@click.command()
-def get_user(p=p):
+# def change_user
+# def add_user
+
+@click.command(help = "to get user completely")
+@click.option("--name", help = "this command is based on name")
+def get_user(name, p=p):
     print(f"""
                     name is {p.name}
                     number is {p.number}
