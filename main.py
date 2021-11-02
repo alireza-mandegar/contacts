@@ -50,7 +50,8 @@ def add_user(name, number, email, telegram, instagram, twitter, github, linkedin
 def get_user(name):
     for row in cur.execute(F'SELECT * FROM contact ORDER BY name'):
         if row[0] == name:
-            p = Person(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7])
+            p = Person(row[0], row[1], row[2], row[3],
+                       row[4], row[5], row[6], row[7])
             print(f"""
 name is {p.name}
 number is {p.number}
@@ -64,6 +65,17 @@ linkedin is {p.linkedin} and the link is https://linkedin.com/{p.linkedin}
         else:
             print("[*] not found in contact! [*]")
 
+
+@click.command(help="to get user's number")
+@click.option("--name", help="this command is based on name")
+def get_number(name):
+    for row in cur.execute(F'SELECT * FROM contact ORDER BY name'):
+        if row[0] == name:
+            p = Person(row[0], row[1], row[2], row[3],
+                       row[4], row[5], row[6], row[7])
+            print(f"name is {p.name}\nnumber is {p.number}")
+        else:
+            print("[*] not found in contact! [*]")
 
 
 group.add_command(get_user)
