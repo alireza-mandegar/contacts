@@ -24,6 +24,8 @@ class Person:
 
 con = sqlite3.connect("./contact.db")
 cur = con.cursor()
+
+
 # cur.execute('''CREATE TABLE contact
 #                 (name, number, email, telegram, instagram, twitter, github, linkedin)''')
 
@@ -133,7 +135,7 @@ def change_linkedin(name, new_linkedin):
     print("[*] not found in contact! [*]")
 
 
-@click.command(help="to add a user to your contact")
+@click.command(help="to add a user to your contact\n[*] the name and number is necessary but the others not! [*]")
 @click.argument("name")
 @click.argument("number")
 @click.argument("email")
@@ -142,7 +144,7 @@ def change_linkedin(name, new_linkedin):
 @click.argument("twitter")
 @click.argument("github")
 @click.argument("linkedin")
-def add_user(name, number, email, telegram, instagram, twitter, github, linkedin):
+def add_user(name, number, email=None, telegram=None, instagram=None, twitter=None, github=None, linkedin=None):
     cur.execute(
         f"INSERT INTO contact VALUES ('{name}', '{number}', '{email}', '{telegram}', '{instagram}', '{twitter}', '{github}', '{linkedin}')")
     con.commit()
