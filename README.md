@@ -3,7 +3,7 @@ A command line contacts
 
 you can see all command just by type this in your command line:
 python main.py --help
-```
+```python main.py --help
 Usage: main.py [OPTIONS] COMMAND [ARGS]...
 
 Options:
